@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cronograma Promoción Anticipada — Juan José</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #d4eae6;
+    --surface: #e8f5f2;
+    --border: #b2d5cf;
+    --accent: #b87000;
+    --accent2: #1a6fc4;
+    --text: #102a26;
+    --muted: #4a706a;
+    --green: #1a6e3c;
+    --p1: #b83228;
+    --p2: #a85200;
+    --p3: #1558b0;
+    --p4: #0d3d8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 3rem 1rem 2.5rem;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse at center, rgba(0,150,130,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #009688, #006b5f);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-top: 0.8rem;
+    font-weight: 300;
+  }
+
+  .alert {
+    max-width: 700px;
+    margin: 1.5rem auto;
+    background: rgba(184,112,0,0.09);
+    border: 1px solid rgba(184,112,0,0.32);
+    border-radius: 10px;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.85rem;
+    color: #6b4200;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Period legend */
+  .legend {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1.5rem auto 2.5rem;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+
+  /* Table */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  thead tr {
+    background: #c2dbd6;
+    border-bottom: 1px solid var(--border);
+  }
+
+  thead th {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  thead th:first-child {
+    color: var(--text);
+    font-size: 0.78rem;
+  }
+
+  thead th.p1 { color: var(--p1); }
+  thead th.p2 { color: var(--p2); }
+  thead th.p3 { color: var(--p3); }
+  thead th.p4 { color: var(--p4); }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody tr:hover { background: rgba(0,100,90,0.05); }
+
+  td {
+    padding: 1rem 1.2rem;
+    vertical-align: top;
+  }
+
+  td:first-child {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--text);
+  }
+
+  .subject-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .links-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(26,111,196,0.1);
+    border: 1px solid rgba(26,111,196,0.28);
+    color: var(--accent2);
+    text-decoration: none;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    transition: all 0.15s;
+    white-space: nowrap;
+    width: fit-content;
+  }
+
+  .link-btn:hover {
+    background: rgba(26,111,196,0.15);
+    border-color: rgba(26,111,196,0.45);
+    transform: translateY(-1px);
+  }
+
+  .link-btn.youtube {
+    background: rgba(192,57,43,0.07);
+    border-color: rgba(192,57,43,0.25);
+    color: var(--p1);
+  }
+  .link-btn.youtube:hover {
+    background: rgba(192,57,43,0.15);
+    border-color: rgba(192,57,43,0.45);
+  }
+
+  .link-btn.genially {
+    background: rgba(100,60,180,0.07);
+    border-color: rgba(100,60,180,0.25);
+    color: #6030b0;
+  }
+  .link-btn.genially:hover {
+    background: rgba(100,60,180,0.15);
+    border-color: rgba(100,60,180,0.45);
+  }
+
+  .topics {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .topics strong {
+    color: var(--text);
+    display: block;
+    font-weight: 600;
+    margin-top: 0.4rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .topics strong:first-child { margin-top: 0; }
+
+  .note-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(26,110,60,0.1);
+    border: 1px solid rgba(26,110,60,0.28);
+    color: var(--green);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  .note-chip.date {
+    background: rgba(184,112,0,0.1);
+    border-color: rgba(184,112,0,0.3);
+    color: #6b4200;
+  }
+
+  .empty-cell { color: #9abfba; font-size: 0.7rem; }
+
+  /* subject colors */
+  .c-info { background: #1d7ed0; }
+  .c-math { background: #e67e22; }
+  .c-sci  { background: #27ae60; }
+  .c-rel  { background: #8e44ad; }
+  .c-soc  { background: #c0392b; }
+  .c-ef   { background: #16a085; }
+  .c-eth  { background: #d4ac0d; }
+  .c-eng  { background: #2980b9; }
+  .c-len  { background: #e74c3c; }
+  .c-aut  { background: #7f8c8d; }
+
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 700px) {
+    td, th { padding: 0.7rem 0.8rem; }
+    h1 { font-size: 1.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="hero">
+    <div class="badge">🚀 Promoción Anticipada 7° → 8°</div>
+    <h1>Cronograma de<br><span>Juan José</span></h1>
+    <p class="subtitle">Cibercolegio UCN · Consolidación de contenidos por periodo</p>
+  </div>
+
+  <div class="alert">
+    ⚠️ <strong>Ciencias P2:</strong> Fecha límite 24 de febrero · <strong>Lenguaje:</strong> 10 de marzo
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--p1)"></div>Periodo 1</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--p2)"></div>Periodo 2</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--p3)"></div>Periodo 3</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--p4)"></div>Periodo 4</div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Materia</th>
+          <th class="p1">Periodo 1</th>
+          <th class="p2">Periodo 2</th>
+          <th class="p3">Periodo 3</th>
+          <th class="p4">Periodo 4</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- INFORMÁTICA -->
+        <tr>
+          <td><div class="subject-icon"><div class="dot c-info"></div>Informática</div></td>
+          <td>
+            <div class="links-cell">
+              <a class="link-btn youtube" href="https://youtu.be/0JtDNLUcqNs?si=LLIGs9zIOcNZfYMn" target="_blank">▶ Video 1</a>
+              <a class="link-btn genially" href="https://view.genial.ly/639102874535340017682a54" target="_blank">✦ Genially 1</a>
+            </div>
+          </td>
+          <td>
+            <div class="links-cell">
+              <a class="link-btn youtube" href="https://youtu.be/eOaFPjtcJBU?si=ZSNsgaUkpZc-jIhs" target="_blank">▶ Video 2</a>
+              <a class="link-btn genially" href="https://view.genially.com/650332d13e076500111160ea" target="_blank">✦ Genially 2</a>
+            </div>
+          </td>
+          <td>
+            <div class="links-cell">
+              <a class="link-btn genially" href="https://view.genial.ly/64b04c373a039b0012b0a0c7" target="_blank">✦ Genially 3</a>
+            </div>
+          </td>
+          <td>
+            <div class="links-cell">
+              <a class="link-btn genially" href="https://view.genial.ly/646655907b64ee0013882784" target="_blank">✦ Genially 4</a>
+            </div>
+          </td>
+          <td></td>
+        </tr>
+
+        <!-- MATEMÁTICAS -->
+        <tr>
+          <td><div class="subject-icon"><div class="dot c-math"></div>Matemáticas</div></td>
+          <td><div class="topics">Números enteros</div></td>
+          <td>
+            <div class="topics">
+              <strong>Polígonos</strong>
+              Clasificación · Perímetro · Área
+              <strong>Números Racionales</strong>
+              Estructura · Recta numérica · Operaciones básicas · Potenciación
+              <strong>Estadística</strong>
+              Tablas de frecuencia (datos no agrupados y agrupados)
+            </div>
+          </td>
+          <td>
+            <div class="topics">
+              <strong>Razones y Proporciones</strong>
+              Proporcionalidad directa e inversa · Regla de 3 simple y directa
+              <strong>Triángulos</strong>
+              Tipos · Rectas y puntos notables · Congruencia y semejanza · Criterios
+              <strong>Estadística</strong>
+              Medidas de tendencia central (datos agrupados)
+            </div>
+          </td>
+          <td>
+            <div class="topics">
+              <strong>Transformaciones en el plano</strong>
+              Rotación · Traslación · Reflexión · Homotecias
+              <strong>Probabilidad</strong>
+              Concepto · Compuesta · Espacio muestral · Diagrama de árbol · Simple
+            </div>
+          </td>
+          <td></td>
+        </tr>
+
+        <!-- CIENCIAS -->
+        <tr>
+          <td><div class="subject-icon"><div class="dot c-sci"></div>Ciencias</div></td>
+          <td>
+            <div class="links-cell">
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28357/modules/items/683027" target="_blank">📘 P1 – L1</a>
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28357/modules/items/683031" target="_blank">📘 P1 – L2</a>
+            </div>
+          </td>
+          <td>
+            <div class="links-cell">
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28357/modules/items/683040" target="_blank">📘 P2 – L1</a>
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28357/pages/p2l2-contenido?module_item_id=683044" target="_blank">📘 P2 – L2</a>
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28357/pages/p2l3-contenido?module_item_id=683048" target="_blank">📘 P2 – L3</a>
+            </div>
+          </td>
+          <td><span class="empty-cell">—</span></td>
+          <td><span class="empty-cell">—</span></td>
+          <td><span class="note-chip date">📅 P2: 24 feb</span></td>
+        </tr>
+
+        <!-- RELIGIÓN -->
+        <tr>
+          <td><div class="subject-icon"><div class="dot c-rel"></div>Religión</div></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28358/modules/items/683120" target="_blank">📘 Módulo P1</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28358/modules/items/683128" target="_blank">📘 Módulo P2</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28358/modules/items/683136" target="_blank">📘 Módulo P3</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28358/modules/items/683144" target="_blank">📘 Módulo P4</a></td>
+          <td></td>
+        </tr>
+
+        <!-- SOCIALES -->
+        <tr>
+          <td><div class="subject-icon"><div class="dot c-soc"></div>Sociales</div></td>
+          <td>
+            <div class="links-cell">
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28359/modules/items/683227" target="_blank">📘 P1 – L1</a>
+            </div>
+          </td>
+          <td>
+            <div class="links-cell">
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28359/modules/items/683239" target="_blank">📘 P2 – L1</a>
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28359/modules/items/683243" target="_blank">📘 P2 – L2</a>
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28359/modules/items/683247" target="_blank">📘 P2 – L3</a>
+            </div>
+          </td>
+          <td>
+            <div class="links-cell">
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28359/modules/items/683255" target="_blank">📘 P3 – L1</a>
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28359/modules/items/683259" target="_blank">📘 P3 – L2</a>
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28359/modules/items/683263" target="_blank">📘 P3 – L3</a>
+            </div>
+          </td>
+          <td><span class="empty-cell">—</span></td>
+          <td></td>
+        </tr>
+
+        <!-- EDUCACIÓN FÍSICA -->
+        <tr>
+          <td><div class="subject-icon"><div class="dot c-ef"></div>Ed. Física</div></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28352/pages/p1-contenido?module_item_id=682353" target="_blank">📘 Módulo P1</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28352/modules/items/682362" target="_blank">📘 Módulo P2</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28352/modules/items/682370" target="_blank">📘 Módulo P3</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28352/modules/items/682379" target="_blank">📘 Módulo P4</a></td>
+          <td></td>
+        </tr>
+
+        <!-- ÉTICA -->
+        <tr>
+          <td><div class="subject-icon"><div class="dot c-eth"></div>Ética</div></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28353/modules/items/682482" target="_blank">📘 Módulo P1</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28353/modules/items/682489" target="_blank">📘 Módulo P2</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28353/modules/items/682496" target="_blank">📘 Módulo P3</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28353/modules/items/682503" target="_blank">📘 Módulo P4</a></td>
+          <td></td>
+        </tr>
+
+        <!-- INGLÉS -->
+        <tr>
+          <td><div class="subject-icon"><div class="dot c-eng"></div>Inglés</div></td>
+          <td colspan="4" style="color: var(--muted); font-size: 0.83rem; font-style: italic;">Sin materiales sugeridos por periodo.</td>
+          <td><span class="note-chip">🗣 Participación activa en P1</span></td>
+        </tr>
+
+        <!-- LENGUAJE -->
+        <tr>
+          <td><div class="subject-icon"><div class="dot c-len"></div>Lenguaje</div></td>
+          <td>
+            <a class="link-btn" href="https://cibercolegioucn-my.sharepoint.com/:w:/g/personal/mvvargasp_cibercolegioucn_edu_co/IQB8Q_5lJaxZRrE8OWxUhlFmARTuKvBaQeujbIhSwIE9IxM?e=hCmH37" target="_blank">📄 Documento Lenguaje</a>
+          </td>
+          <td><span class="empty-cell">—</span></td>
+          <td><span class="empty-cell">—</span></td>
+          <td><span class="empty-cell">—</span></td>
+          <td><span class="note-chip date">📅 10 de marzo</span></td>
+        </tr>
+
+        <!-- AUTÓNOMA -->
+        <tr>
+          <td><div class="subject-icon"><div class="dot c-aut"></div>Autónoma</div></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28351/pages/p1-contenido?module_item_id=682269" target="_blank">📘 Módulo P1</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28351/pages/p2-contenido?module_item_id=682276" target="_blank">📘 Módulo P2</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28351/pages/p3-contenido?module_item_id=682283" target="_blank">📘 Módulo P3</a></td>
+          <td><a class="link-btn" href="https://fucn.instructure.com/courses/28351/pages/p4-contenido?module_item_id=682290" target="_blank">📘 Módulo P4</a></td>
+          <td></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p>¡Mucho ánimo Juan José! 🎯 Cada periodo completado es un paso más hacia octavo.</p>
+  </footer>
+</div>
+
+</body>
+</html>
