@@ -290,36 +290,7 @@
 
   footer { text-align: center; margin-top: 3rem; color: var(--muted); font-size: 0.75rem; }
 
-  /* ── Export button ── */
-  .export-bar {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
-  }
-
-  .btn-export {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: linear-gradient(135deg, #009688, #006b5f);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 0.65rem 1.3rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,150,136,0.25);
-    transition: all 0.18s;
-    letter-spacing: 0.02em;
-  }
-  .btn-export:hover {
-    background: linear-gradient(135deg, #00b09b, #008577);
-    box-shadow: 0 4px 14px rgba(0,150,136,0.35);
-    transform: translateY(-1px);
-  }
-  .btn-export:active { transform: translateY(0); }
+  
 
   @media (max-width: 700px) {
     td, th { padding: 0.7rem 0.8rem; }
@@ -343,10 +314,6 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--p2)"></div>Periodo 2</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--p3)"></div>Periodo 3</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--p4)"></div>Periodo 4</div>
-  </div>
-
-  <div class="export-bar" style="display: flex;">
-    <button class="btn-export" onclick="exportHTML()">⬇ Exportar HTML con fechas</button>
   </div>
 
   <div class="table-wrap">
@@ -710,6 +677,12 @@
 
     // Get current HTML source
     let html = document.documentElement.outerHTML;
+
+    // Remove export bar HTML (div + button) completely
+    html = html.replace(/<div class="export-bar"[\s\S]*?<\/div>\s*/g, '');
+
+    // Remove export bar CSS
+    html = html.replace(/\/\* ── Export button ── \*\/[\s\S]*?\.btn-export:active \{ transform: translateY\(0\); \}/g, '');
 
     // Remove any previously injected preloaded-dates script
     html = html.replace(/
