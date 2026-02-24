@@ -93,12 +93,8 @@
     gap: 0.6rem;
   }
 
-  .wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+  .wrapper { max-width: 1100px; margin: 0 auto; }
 
-  /* Period legend */
   .legend {
     display: flex;
     gap: 1rem;
@@ -116,28 +112,17 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
-  .legend-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-  }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
 
-  /* Table */
   .table-wrap {
     overflow-x: auto;
     border-radius: 16px;
     border: 1px solid var(--border);
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.875rem;
-  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
 
-  thead tr {
-    background: #c2dbd6;
-    border-bottom: 1px solid var(--border);
-  }
+  thead tr { background: #c2dbd6; border-bottom: 1px solid var(--border); }
 
   thead th {
     padding: 1rem 1.2rem;
@@ -149,29 +134,17 @@
     font-weight: 500;
   }
 
-  thead th:first-child {
-    color: var(--text);
-    font-size: 0.78rem;
-  }
-
+  thead th:first-child { color: var(--text); font-size: 0.78rem; }
   thead th.p1 { color: var(--p1); }
   thead th.p2 { color: var(--p2); }
   thead th.p3 { color: var(--p3); }
   thead th.p4 { color: var(--p4); }
 
-  tbody tr {
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s;
-  }
-
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
   tbody tr:last-child { border-bottom: none; }
-
   tbody tr:hover { background: rgba(0,100,90,0.05); }
 
-  td {
-    padding: 1rem 1.2rem;
-    vertical-align: top;
-  }
+  td { padding: 1rem 1.2rem; vertical-align: top; }
 
   td:first-child {
     font-family: 'Playfair Display', serif;
@@ -181,23 +154,9 @@
     color: var(--text);
   }
 
-  .subject-icon {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .links-cell {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
+  .subject-icon { display: inline-flex; align-items: center; gap: 0.5rem; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .links-cell { display: flex; flex-direction: column; gap: 0.4rem; }
 
   .link-btn {
     display: inline-flex;
@@ -215,53 +174,21 @@
     white-space: nowrap;
     width: fit-content;
   }
+  .link-btn:hover { background: rgba(26,111,196,0.15); border-color: rgba(26,111,196,0.45); transform: translateY(-1px); }
 
-  .link-btn:hover {
-    background: rgba(26,111,196,0.15);
-    border-color: rgba(26,111,196,0.45);
-    transform: translateY(-1px);
-  }
+  .link-btn.youtube { background: rgba(192,57,43,0.07); border-color: rgba(192,57,43,0.25); color: var(--p1); }
+  .link-btn.youtube:hover { background: rgba(192,57,43,0.15); border-color: rgba(192,57,43,0.45); }
 
-  .link-btn.youtube {
-    background: rgba(192,57,43,0.07);
-    border-color: rgba(192,57,43,0.25);
-    color: var(--p1);
-  }
-  .link-btn.youtube:hover {
-    background: rgba(192,57,43,0.15);
-    border-color: rgba(192,57,43,0.45);
-  }
+  .link-btn.genially { background: rgba(100,60,180,0.07); border-color: rgba(100,60,180,0.25); color: #6030b0; }
+  .link-btn.genially:hover { background: rgba(100,60,180,0.15); border-color: rgba(100,60,180,0.45); }
 
-  .link-btn.genially {
-    background: rgba(100,60,180,0.07);
-    border-color: rgba(100,60,180,0.25);
-    color: #6030b0;
-  }
-  .link-btn.genially:hover {
-    background: rgba(100,60,180,0.15);
-    border-color: rgba(100,60,180,0.45);
-  }
-
-  .topics {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .topics strong {
-    color: var(--text);
-    display: block;
-    font-weight: 600;
-    margin-top: 0.4rem;
-    margin-bottom: 0.1rem;
-  }
-
+  .topics { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+  .topics strong { color: var(--text); display: block; font-weight: 600; margin-top: 0.4rem; margin-bottom: 0.1rem; }
   .topics strong:first-child { margin-top: 0; }
 
   .note-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
+    display: block;
+    width: fit-content;
     background: rgba(26,110,60,0.1);
     border: 1px solid rgba(26,110,60,0.28);
     color: var(--green);
@@ -269,15 +196,86 @@
     padding: 0.3rem 0.7rem;
     border-radius: 6px;
     font-weight: 500;
-  }
-
-  .note-chip.date {
-    background: rgba(184,112,0,0.1);
-    border-color: rgba(184,112,0,0.3);
-    color: #6b4200;
+    margin-bottom: 0.5rem;
   }
 
   .empty-cell { color: #9abfba; font-size: 0.7rem; }
+
+  /* ── Date pickers por periodo ── */
+  .periods-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 170px;
+  }
+
+  .period-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.18rem;
+  }
+
+  .period-header {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .period-tag {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.12rem 0.4rem;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .period-tag.p1 { background: rgba(184,50,40,0.1);  color: var(--p1); border: 1px solid rgba(184,50,40,0.2); }
+  .period-tag.p2 { background: rgba(168,82,0,0.1);   color: var(--p2); border: 1px solid rgba(168,82,0,0.2); }
+  .period-tag.p3 { background: rgba(21,88,176,0.1);  color: var(--p3); border: 1px solid rgba(21,88,176,0.2); }
+  .period-tag.p4 { background: rgba(13,61,138,0.1);  color: var(--p4); border: 1px solid rgba(13,61,138,0.2); }
+
+  .date-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.18rem 0.45rem;
+    border-radius: 5px;
+  }
+  .date-badge.normal  { background: rgba(0,150,136,0.1);  border: 1px solid rgba(0,150,136,0.25);  color: #005f56; }
+  .date-badge.soon    { background: rgba(184,112,0,0.1);  border: 1px solid rgba(184,112,0,0.25);  color: #6b4200; }
+  .date-badge.overdue { background: rgba(192,57,43,0.1);  border: 1px solid rgba(192,57,43,0.25);  color: #7a1a10; }
+
+  .date-input {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.25rem 0.45rem;
+    font-size: 0.73rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.15s;
+    width: 100%;
+    display: block;
+  }
+  .date-input:hover { border-color: #009688; background: rgba(255,255,255,0.85); }
+  .date-input:focus { outline: none; border-color: #009688; background: #fff; box-shadow: 0 0 0 3px rgba(0,150,136,0.12); }
+
+  .btn-clear {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.7rem;
+    padding: 0 0.15rem;
+    transition: color 0.15s;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .btn-clear:hover { color: #c0392b; }
 
   /* subject colors */
   .c-info { background: #1d7ed0; }
@@ -291,12 +289,7 @@
   .c-len  { background: #e74c3c; }
   .c-aut  { background: #7f8c8d; }
 
-  footer {
-    text-align: center;
-    margin-top: 3rem;
-    color: var(--muted);
-    font-size: 0.75rem;
-  }
+  footer { text-align: center; margin-top: 3rem; color: var(--muted); font-size: 0.75rem; }
 
   @media (max-width: 700px) {
     td, th { padding: 0.7rem 0.8rem; }
@@ -313,8 +306,8 @@
     <p class="subtitle">Cibercolegio UCN · Consolidación de contenidos por periodo</p>
   </div>
 
-  <div class="alert">
-    ⚠️ <strong>Ciencias P2:</strong> Fecha límite 24 de febrero · <strong>Lenguaje:</strong> 10 de marzo
+  <div class="alert" id="alert-banner">
+    📋 Usa los selectores en la columna <strong>Notas</strong> para registrar las fechas límite de cada materia.
   </div>
 
   <div class="legend">
@@ -333,7 +326,7 @@
           <th class="p2">Periodo 2</th>
           <th class="p3">Periodo 3</th>
           <th class="p4">Periodo 4</th>
-          <th>Notas</th>
+          <th>Notas / Fecha límite</th>
         </tr>
       </thead>
       <tbody>
@@ -353,17 +346,9 @@
               <a class="link-btn genially" href="https://view.genially.com/650332d13e076500111160ea" target="_blank">✦ Genially 2</a>
             </div>
           </td>
-          <td>
-            <div class="links-cell">
-              <a class="link-btn genially" href="https://view.genial.ly/64b04c373a039b0012b0a0c7" target="_blank">✦ Genially 3</a>
-            </div>
-          </td>
-          <td>
-            <div class="links-cell">
-              <a class="link-btn genially" href="https://view.genial.ly/646655907b64ee0013882784" target="_blank">✦ Genially 4</a>
-            </div>
-          </td>
-          <td></td>
+          <td><a class="link-btn genially" href="https://view.genial.ly/64b04c373a039b0012b0a0c7" target="_blank">✦ Genially 3</a></td>
+          <td><a class="link-btn genially" href="https://view.genial.ly/646655907b64ee0013882784" target="_blank">✦ Genially 4</a></td>
+          <td><div id="note-informatica"></div></td>
         </tr>
 
         <!-- MATEMÁTICAS -->
@@ -372,33 +357,25 @@
           <td><div class="topics">Números enteros</div></td>
           <td>
             <div class="topics">
-              <strong>Polígonos</strong>
-              Clasificación · Perímetro · Área
-              <strong>Números Racionales</strong>
-              Estructura · Recta numérica · Operaciones básicas · Potenciación
-              <strong>Estadística</strong>
-              Tablas de frecuencia (datos no agrupados y agrupados)
+              <strong>Polígonos</strong>Clasificación · Perímetro · Área
+              <strong>Números Racionales</strong>Estructura · Recta numérica · Operaciones básicas · Potenciación
+              <strong>Estadística</strong>Tablas de frecuencia (datos no agrupados y agrupados)
             </div>
           </td>
           <td>
             <div class="topics">
-              <strong>Razones y Proporciones</strong>
-              Proporcionalidad directa e inversa · Regla de 3 simple y directa
-              <strong>Triángulos</strong>
-              Tipos · Rectas y puntos notables · Congruencia y semejanza · Criterios
-              <strong>Estadística</strong>
-              Medidas de tendencia central (datos agrupados)
+              <strong>Razones y Proporciones</strong>Proporcionalidad directa e inversa · Regla de 3 simple y directa
+              <strong>Triángulos</strong>Tipos · Rectas y puntos notables · Congruencia y semejanza · Criterios
+              <strong>Estadística</strong>Medidas de tendencia central (datos agrupados)
             </div>
           </td>
           <td>
             <div class="topics">
-              <strong>Transformaciones en el plano</strong>
-              Rotación · Traslación · Reflexión · Homotecias
-              <strong>Probabilidad</strong>
-              Concepto · Compuesta · Espacio muestral · Diagrama de árbol · Simple
+              <strong>Transformaciones en el plano</strong>Rotación · Traslación · Reflexión · Homotecias
+              <strong>Probabilidad</strong>Concepto · Compuesta · Espacio muestral · Diagrama de árbol · Simple
             </div>
           </td>
-          <td></td>
+          <td><div id="note-matematicas"></div></td>
         </tr>
 
         <!-- CIENCIAS -->
@@ -417,9 +394,20 @@
               <a class="link-btn" href="https://fucn.instructure.com/courses/28357/pages/p2l3-contenido?module_item_id=683048" target="_blank">📘 P2 – L3</a>
             </div>
           </td>
-          <td><span class="empty-cell">—</span></td>
-          <td><span class="empty-cell">—</span></td>
-          <td><span class="note-chip date">📅 P2: 24 feb</span></td>
+          <td>
+            <div class="links-cell">
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28357/modules/items/683057" target="_blank">📘 P3 – L1</a>
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28357/modules/items/683061" target="_blank">📘 P3 – L2</a>
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28357/modules/items/683065" target="_blank">📘 P3 – L3</a>
+            </div>
+          </td>
+          <td>
+            <div class="links-cell">
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28357/modules/items/683074" target="_blank">📘 P4 – L1</a>
+              <a class="link-btn" href="https://fucn.instructure.com/courses/28357/modules/items/683078" target="_blank">📘 P4 – L2</a>
+            </div>
+          </td>
+          <td><div id="note-ciencias"></div></td>
         </tr>
 
         <!-- RELIGIÓN -->
@@ -429,7 +417,7 @@
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28358/modules/items/683128" target="_blank">📘 Módulo P2</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28358/modules/items/683136" target="_blank">📘 Módulo P3</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28358/modules/items/683144" target="_blank">📘 Módulo P4</a></td>
-          <td></td>
+          <td><div id="note-religion"></div></td>
         </tr>
 
         <!-- SOCIALES -->
@@ -455,7 +443,7 @@
             </div>
           </td>
           <td><span class="empty-cell">—</span></td>
-          <td></td>
+          <td><div id="note-sociales"></div></td>
         </tr>
 
         <!-- EDUCACIÓN FÍSICA -->
@@ -465,7 +453,7 @@
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28352/modules/items/682362" target="_blank">📘 Módulo P2</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28352/modules/items/682370" target="_blank">📘 Módulo P3</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28352/modules/items/682379" target="_blank">📘 Módulo P4</a></td>
-          <td></td>
+          <td><div id="note-edufisica"></div></td>
         </tr>
 
         <!-- ÉTICA -->
@@ -475,14 +463,17 @@
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28353/modules/items/682489" target="_blank">📘 Módulo P2</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28353/modules/items/682496" target="_blank">📘 Módulo P3</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28353/modules/items/682503" target="_blank">📘 Módulo P4</a></td>
-          <td></td>
+          <td><div id="note-etica"></div></td>
         </tr>
 
         <!-- INGLÉS -->
         <tr>
           <td><div class="subject-icon"><div class="dot c-eng"></div>Inglés</div></td>
           <td colspan="4" style="color: var(--muted); font-size: 0.83rem; font-style: italic;">Sin materiales sugeridos por periodo.</td>
-          <td><span class="note-chip">🗣 Participación activa en P1</span></td>
+          <td>
+            <span class="note-chip">🗣 Participación activa en P1</span>
+            <div id="note-ingles"></div>
+          </td>
         </tr>
 
         <!-- LENGUAJE -->
@@ -494,7 +485,7 @@
           <td><span class="empty-cell">—</span></td>
           <td><span class="empty-cell">—</span></td>
           <td><span class="empty-cell">—</span></td>
-          <td><span class="note-chip date">📅 10 de marzo</span></td>
+          <td><div id="note-lenguaje"></div></td>
         </tr>
 
         <!-- AUTÓNOMA -->
@@ -504,7 +495,7 @@
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28351/pages/p2-contenido?module_item_id=682276" target="_blank">📘 Módulo P2</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28351/pages/p3-contenido?module_item_id=682283" target="_blank">📘 Módulo P3</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28351/pages/p4-contenido?module_item_id=682290" target="_blank">📘 Módulo P4</a></td>
-          <td></td>
+          <td><div id="note-autonoma"></div></td>
         </tr>
 
       </tbody>
@@ -515,6 +506,162 @@
     <p>¡Mucho ánimo Juan José! 🎯 Cada periodo completado es un paso más hacia octavo.</p>
   </footer>
 </div>
+
+<script>
+  const MATERIAS = [
+    { id: 'informatica', label: 'Informática' },
+    { id: 'matematicas', label: 'Matemáticas' },
+    { id: 'ciencias',    label: 'Ciencias' },
+    { id: 'religion',    label: 'Religión' },
+    { id: 'sociales',    label: 'Sociales' },
+    { id: 'edufisica',   label: 'Ed. Física' },
+    { id: 'etica',       label: 'Ética' },
+    { id: 'ingles',      label: 'Inglés' },
+    { id: 'lenguaje',    label: 'Lenguaje' },
+    { id: 'autonoma',    label: 'Autónoma' },
+  ];
+
+  const PERIODS = [
+    { key: 'p1', label: 'P1' },
+    { key: 'p2', label: 'P2' },
+    { key: 'p3', label: 'P3' },
+    { key: 'p4', label: 'P4' },
+  ];
+
+  const MONTHS = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+
+  function storageKey(materiaId, periodKey) {
+    return `juanjo_${materiaId}_${periodKey}`;
+  }
+
+  function formatDate(iso) {
+    const [y, m, d] = iso.split('-');
+    return `${parseInt(d)} ${MONTHS[parseInt(m)-1]} ${y}`;
+  }
+
+  function daysDiff(iso) {
+    const today = new Date(); today.setHours(0,0,0,0);
+    const due = new Date(iso + 'T00:00:00');
+    return Math.round((due - today) / 86400000);
+  }
+
+  function badgeClass(diff) {
+    if (diff < 0)  return 'overdue';
+    if (diff <= 7) return 'soon';
+    return 'normal';
+  }
+
+  function badgeIcon(diff) {
+    if (diff < 0)  return '🔴';
+    if (diff <= 7) return '⚠️';
+    return '📅';
+  }
+
+  function badgeExtra(diff) {
+    if (diff < 0)   return ` (hace ${Math.abs(diff)}d)`;
+    if (diff === 0) return ' (¡hoy!)';
+    if (diff <= 7)  return ` (en ${diff}d)`;
+    return '';
+  }
+
+  function renderPeriodRow(container, materia, period) {
+    const saved = localStorage.getItem(storageKey(materia.id, period.key));
+    const row = document.createElement('div');
+    row.className = 'period-row';
+
+    // Header: tag + badge (if saved) + clear btn
+    const header = document.createElement('div');
+    header.className = 'period-header';
+
+    const tag = document.createElement('span');
+    tag.className = `period-tag ${period.key}`;
+    tag.textContent = period.label;
+    header.appendChild(tag);
+
+    if (saved) {
+      const diff  = daysDiff(saved);
+      const badge = document.createElement('span');
+      badge.className = `date-badge ${badgeClass(diff)}`;
+      badge.textContent = `${badgeIcon(diff)} ${formatDate(saved)}${badgeExtra(diff)}`;
+      header.appendChild(badge);
+
+      const btnX = document.createElement('button');
+      btnX.className = 'btn-clear';
+      btnX.title = 'Borrar';
+      btnX.textContent = '✕';
+      btnX.onclick = () => {
+        localStorage.removeItem(storageKey(materia.id, period.key));
+        container.innerHTML = '';
+        renderNote(materia);
+        updateAlert();
+      };
+      header.appendChild(btnX);
+    }
+
+    row.appendChild(header);
+
+    // Date input
+    const input = document.createElement('input');
+    input.type = 'date';
+    input.className = 'date-input';
+    if (saved) input.value = saved;
+    input.title = `Fecha límite ${period.label}`;
+    input.onchange = () => {
+      if (input.value) {
+        localStorage.setItem(storageKey(materia.id, period.key), input.value);
+        container.innerHTML = '';
+        renderNote(materia);
+        updateAlert();
+      }
+    };
+    row.appendChild(input);
+    return row;
+  }
+
+  function renderNote(materia) {
+    const container = document.getElementById('note-' + materia.id);
+    if (!container) return;
+    container.innerHTML = '';
+
+    const grid = document.createElement('div');
+    grid.className = 'periods-grid';
+
+    PERIODS.forEach(period => {
+      grid.appendChild(renderPeriodRow(grid, materia, period));
+    });
+
+    container.appendChild(grid);
+  }
+
+  function updateAlert() {
+    const banner = document.getElementById('alert-banner');
+    const urgent = [];
+    MATERIAS.forEach(m => {
+      PERIODS.forEach(p => {
+        const d = localStorage.getItem(storageKey(m.id, p.key));
+        if (!d) return;
+        const diff = daysDiff(d);
+        if (diff < 0)       urgent.push(`<strong>${m.label} ${p.label}</strong>: vencida`);
+        else if (diff <= 7) urgent.push(`<strong>${m.label} ${p.label}</strong>: ${formatDate(d)} (${diff}d)`);
+      });
+    });
+
+    if (urgent.length > 0) {
+      banner.innerHTML = '⚠️ Próximas o vencidas: ' + urgent.join(' · ');
+      banner.style.borderColor = 'rgba(192,57,43,0.4)';
+      banner.style.background  = 'rgba(192,57,43,0.07)';
+      banner.style.color       = '#7a1a10';
+    } else {
+      banner.innerHTML = '📋 Usa los selectores en la columna <strong>Notas</strong> para registrar las fechas límite por periodo.';
+      banner.style.borderColor = 'rgba(184,112,0,0.32)';
+      banner.style.background  = 'rgba(184,112,0,0.09)';
+      banner.style.color       = '#6b4200';
+    }
+  }
+
+  MATERIAS.forEach(renderNote);
+  updateAlert();
+</script>
 
 </body>
 </html>
