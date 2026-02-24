@@ -345,7 +345,7 @@
     <div class="legend-item"><div class="legend-dot" style="background:var(--p4)"></div>Periodo 4</div>
   </div>
 
-  <div class="export-bar">
+  <div class="export-bar" style="display: flex;">
     <button class="btn-export" onclick="exportHTML()">⬇ Exportar HTML con fechas</button>
   </div>
 
@@ -691,6 +691,14 @@
     }
   }
 
+  // EXPORTED_FLAG is set to true in the downloaded version — keeps button hidden
+  var EXPORTED_VERSION = (typeof __EXPORTED__ !== 'undefined' && __EXPORTED__ === true);
+
+  function initExportBar() {
+    const isLocal = location.protocol === 'file:';
+    document.querySelector('.export-bar').style.display = (isLocal && !EXPORTED_VERSION) ? 'flex' : 'none';
+  }
+
   function exportHTML() {
     // Collect all saved dates from localStorage
     const dates = {};
@@ -705,8 +713,10 @@
     // Get current HTML source
     let html = document.documentElement.outerHTML;
 
-    // Inject a <script> block with the saved dates right before 
+    // Remove any previously injected preloaded-dates script
+    html = html.replace(/
 <script id="preloaded-dates">
+var __EXPORTED__ = true;
 (function(){
   const saved = {
   "juanjo_ciencias_p2": "2026-02-24",
@@ -715,7 +725,4 @@
   Object.keys(saved).forEach(function(k){ localStorage.setItem(k, saved[k]); });
 })();
 </script>
-</body>
-    // This block will pre-populate localStorage on load
-    const injectScript = `
 </body></html>
