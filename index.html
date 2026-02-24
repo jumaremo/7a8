@@ -693,7 +693,7 @@
 
   // Show export button only on local file:// — never on https (Netlify/published)
   function initExportBar() {
-    const show = location.protocol === 'file:' && typeof __EXPORTED__ === 'undefined';
+    const show = false;
     document.querySelector('.export-bar').style.display = show ? 'flex' : 'none';
   }
 
