@@ -691,12 +691,10 @@
     }
   }
 
-  // EXPORTED_FLAG is set to true in the downloaded version — keeps button hidden
-  var EXPORTED_VERSION = (typeof __EXPORTED__ !== 'undefined' && __EXPORTED__ === true);
-
+  // Show export button only on local file:// — never on https (Netlify/published)
   function initExportBar() {
-    const isLocal = location.protocol === 'file:';
-    document.querySelector('.export-bar').style.display = (isLocal && !EXPORTED_VERSION) ? 'flex' : 'none';
+    const show = location.protocol === 'file:' && typeof __EXPORTED__ === 'undefined';
+    document.querySelector('.export-bar').style.display = show ? 'flex' : 'none';
   }
 
   function exportHTML() {
