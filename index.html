@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html lang="es"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cronograma Promoción Anticipada — Juan José</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #d4eae6;
@@ -291,6 +290,37 @@
 
   footer { text-align: center; margin-top: 3rem; color: var(--muted); font-size: 0.75rem; }
 
+  /* ── Export button ── */
+  .export-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+  }
+
+  .btn-export {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #009688, #006b5f);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.65rem 1.3rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,150,136,0.25);
+    transition: all 0.18s;
+    letter-spacing: 0.02em;
+  }
+  .btn-export:hover {
+    background: linear-gradient(135deg, #00b09b, #008577);
+    box-shadow: 0 4px 14px rgba(0,150,136,0.35);
+    transform: translateY(-1px);
+  }
+  .btn-export:active { transform: translateY(0); }
+
   @media (max-width: 700px) {
     td, th { padding: 0.7rem 0.8rem; }
     h1 { font-size: 1.9rem; }
@@ -306,15 +336,17 @@
     <p class="subtitle">Cibercolegio UCN · Consolidación de contenidos por periodo</p>
   </div>
 
-  <div class="alert" id="alert-banner">
-    📋 Usa los selectores en la columna <strong>Notas</strong> para registrar las fechas límite de cada materia.
-  </div>
+  <div class="alert" id="alert-banner" style="border-color: rgba(192, 57, 43, 0.4); background: rgba(192, 57, 43, 0.07); color: rgb(122, 26, 16);">⚠️ Próximas o vencidas: <strong>Ciencias P2</strong>: 24 feb 2026 (1d)</div>
 
   <div class="legend">
     <div class="legend-item"><div class="legend-dot" style="background:var(--p1)"></div>Periodo 1</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--p2)"></div>Periodo 2</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--p3)"></div>Periodo 3</div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--p4)"></div>Periodo 4</div>
+  </div>
+
+  <div class="export-bar">
+    <button class="btn-export" onclick="exportHTML()">⬇ Exportar HTML con fechas</button>
   </div>
 
   <div class="table-wrap">
@@ -348,7 +380,7 @@
           </td>
           <td><a class="link-btn genially" href="https://view.genial.ly/64b04c373a039b0012b0a0c7" target="_blank">✦ Genially 3</a></td>
           <td><a class="link-btn genially" href="https://view.genial.ly/646655907b64ee0013882784" target="_blank">✦ Genially 4</a></td>
-          <td><div id="note-informatica"></div></td>
+          <td><div id="note-informatica"><div class="periods-grid"><div class="period-row"><div class="period-header"><span class="period-tag p1">P1</span></div><input type="date" class="date-input" title="Fecha límite P1"></div><div class="period-row"><div class="period-header"><span class="period-tag p2">P2</span></div><input type="date" class="date-input" title="Fecha límite P2"></div><div class="period-row"><div class="period-header"><span class="period-tag p3">P3</span></div><input type="date" class="date-input" title="Fecha límite P3"></div><div class="period-row"><div class="period-header"><span class="period-tag p4">P4</span></div><input type="date" class="date-input" title="Fecha límite P4"></div></div></div></td>
         </tr>
 
         <!-- MATEMÁTICAS -->
@@ -375,7 +407,7 @@
               <strong>Probabilidad</strong>Concepto · Compuesta · Espacio muestral · Diagrama de árbol · Simple
             </div>
           </td>
-          <td><div id="note-matematicas"></div></td>
+          <td><div id="note-matematicas"><div class="periods-grid"><div class="period-row"><div class="period-header"><span class="period-tag p1">P1</span></div><input type="date" class="date-input" title="Fecha límite P1"></div><div class="period-row"><div class="period-header"><span class="period-tag p2">P2</span></div><input type="date" class="date-input" title="Fecha límite P2"></div><div class="period-row"><div class="period-header"><span class="period-tag p3">P3</span></div><input type="date" class="date-input" title="Fecha límite P3"></div><div class="period-row"><div class="period-header"><span class="period-tag p4">P4</span></div><input type="date" class="date-input" title="Fecha límite P4"></div></div></div></td>
         </tr>
 
         <!-- CIENCIAS -->
@@ -407,7 +439,7 @@
               <a class="link-btn" href="https://fucn.instructure.com/courses/28357/modules/items/683078" target="_blank">📘 P4 – L2</a>
             </div>
           </td>
-          <td><div id="note-ciencias"></div></td>
+          <td><div id="note-ciencias"><div class="periods-grid"><div class="period-row"><div class="period-header"><span class="period-tag p1">P1</span></div><input type="date" class="date-input" title="Fecha límite P1"></div><div class="period-row"><div class="period-header"><span class="period-tag p2">P2</span><span class="date-badge soon">⚠️ 24 feb 2026 (en 1d)</span><button class="btn-clear" title="Borrar">✕</button></div><input type="date" class="date-input" title="Fecha límite P2"></div><div class="period-row"><div class="period-header"><span class="period-tag p3">P3</span></div><input type="date" class="date-input" title="Fecha límite P3"></div><div class="period-row"><div class="period-header"><span class="period-tag p4">P4</span></div><input type="date" class="date-input" title="Fecha límite P4"></div></div></div></td>
         </tr>
 
         <!-- RELIGIÓN -->
@@ -417,7 +449,7 @@
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28358/modules/items/683128" target="_blank">📘 Módulo P2</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28358/modules/items/683136" target="_blank">📘 Módulo P3</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28358/modules/items/683144" target="_blank">📘 Módulo P4</a></td>
-          <td><div id="note-religion"></div></td>
+          <td><div id="note-religion"><div class="periods-grid"><div class="period-row"><div class="period-header"><span class="period-tag p1">P1</span></div><input type="date" class="date-input" title="Fecha límite P1"></div><div class="period-row"><div class="period-header"><span class="period-tag p2">P2</span></div><input type="date" class="date-input" title="Fecha límite P2"></div><div class="period-row"><div class="period-header"><span class="period-tag p3">P3</span></div><input type="date" class="date-input" title="Fecha límite P3"></div><div class="period-row"><div class="period-header"><span class="period-tag p4">P4</span></div><input type="date" class="date-input" title="Fecha límite P4"></div></div></div></td>
         </tr>
 
         <!-- SOCIALES -->
@@ -443,7 +475,7 @@
             </div>
           </td>
           <td><span class="empty-cell">—</span></td>
-          <td><div id="note-sociales"></div></td>
+          <td><div id="note-sociales"><div class="periods-grid"><div class="period-row"><div class="period-header"><span class="period-tag p1">P1</span></div><input type="date" class="date-input" title="Fecha límite P1"></div><div class="period-row"><div class="period-header"><span class="period-tag p2">P2</span></div><input type="date" class="date-input" title="Fecha límite P2"></div><div class="period-row"><div class="period-header"><span class="period-tag p3">P3</span></div><input type="date" class="date-input" title="Fecha límite P3"></div><div class="period-row"><div class="period-header"><span class="period-tag p4">P4</span></div><input type="date" class="date-input" title="Fecha límite P4"></div></div></div></td>
         </tr>
 
         <!-- EDUCACIÓN FÍSICA -->
@@ -453,7 +485,7 @@
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28352/modules/items/682362" target="_blank">📘 Módulo P2</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28352/modules/items/682370" target="_blank">📘 Módulo P3</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28352/modules/items/682379" target="_blank">📘 Módulo P4</a></td>
-          <td><div id="note-edufisica"></div></td>
+          <td><div id="note-edufisica"><div class="periods-grid"><div class="period-row"><div class="period-header"><span class="period-tag p1">P1</span></div><input type="date" class="date-input" title="Fecha límite P1"></div><div class="period-row"><div class="period-header"><span class="period-tag p2">P2</span></div><input type="date" class="date-input" title="Fecha límite P2"></div><div class="period-row"><div class="period-header"><span class="period-tag p3">P3</span></div><input type="date" class="date-input" title="Fecha límite P3"></div><div class="period-row"><div class="period-header"><span class="period-tag p4">P4</span></div><input type="date" class="date-input" title="Fecha límite P4"></div></div></div></td>
         </tr>
 
         <!-- ÉTICA -->
@@ -463,7 +495,7 @@
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28353/modules/items/682489" target="_blank">📘 Módulo P2</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28353/modules/items/682496" target="_blank">📘 Módulo P3</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28353/modules/items/682503" target="_blank">📘 Módulo P4</a></td>
-          <td><div id="note-etica"></div></td>
+          <td><div id="note-etica"><div class="periods-grid"><div class="period-row"><div class="period-header"><span class="period-tag p1">P1</span></div><input type="date" class="date-input" title="Fecha límite P1"></div><div class="period-row"><div class="period-header"><span class="period-tag p2">P2</span></div><input type="date" class="date-input" title="Fecha límite P2"></div><div class="period-row"><div class="period-header"><span class="period-tag p3">P3</span></div><input type="date" class="date-input" title="Fecha límite P3"></div><div class="period-row"><div class="period-header"><span class="period-tag p4">P4</span></div><input type="date" class="date-input" title="Fecha límite P4"></div></div></div></td>
         </tr>
 
         <!-- INGLÉS -->
@@ -472,7 +504,7 @@
           <td colspan="4" style="color: var(--muted); font-size: 0.83rem; font-style: italic;">Sin materiales sugeridos por periodo.</td>
           <td>
             <span class="note-chip">🗣 Participación activa en P1</span>
-            <div id="note-ingles"></div>
+            <div id="note-ingles"><div class="periods-grid"><div class="period-row"><div class="period-header"><span class="period-tag p1">P1</span></div><input type="date" class="date-input" title="Fecha límite P1"></div><div class="period-row"><div class="period-header"><span class="period-tag p2">P2</span></div><input type="date" class="date-input" title="Fecha límite P2"></div><div class="period-row"><div class="period-header"><span class="period-tag p3">P3</span></div><input type="date" class="date-input" title="Fecha límite P3"></div><div class="period-row"><div class="period-header"><span class="period-tag p4">P4</span></div><input type="date" class="date-input" title="Fecha límite P4"></div></div></div>
           </td>
         </tr>
 
@@ -485,7 +517,7 @@
           <td><span class="empty-cell">—</span></td>
           <td><span class="empty-cell">—</span></td>
           <td><span class="empty-cell">—</span></td>
-          <td><div id="note-lenguaje"></div></td>
+          <td><div id="note-lenguaje"><div class="periods-grid"><div class="period-row"><div class="period-header"><span class="period-tag p1">P1</span></div><input type="date" class="date-input" title="Fecha límite P1"></div><div class="period-row"><div class="period-header"><span class="period-tag p2">P2</span><span class="date-badge normal">📅 10 mar 2026</span><button class="btn-clear" title="Borrar">✕</button></div><input type="date" class="date-input" title="Fecha límite P2"></div><div class="period-row"><div class="period-header"><span class="period-tag p3">P3</span></div><input type="date" class="date-input" title="Fecha límite P3"></div><div class="period-row"><div class="period-header"><span class="period-tag p4">P4</span></div><input type="date" class="date-input" title="Fecha límite P4"></div></div></div></td>
         </tr>
 
         <!-- AUTÓNOMA -->
@@ -495,7 +527,7 @@
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28351/pages/p2-contenido?module_item_id=682276" target="_blank">📘 Módulo P2</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28351/pages/p3-contenido?module_item_id=682283" target="_blank">📘 Módulo P3</a></td>
           <td><a class="link-btn" href="https://fucn.instructure.com/courses/28351/pages/p4-contenido?module_item_id=682290" target="_blank">📘 Módulo P4</a></td>
-          <td><div id="note-autonoma"></div></td>
+          <td><div id="note-autonoma"><div class="periods-grid"><div class="period-row"><div class="period-header"><span class="period-tag p1">P1</span></div><input type="date" class="date-input" title="Fecha límite P1"></div><div class="period-row"><div class="period-header"><span class="period-tag p2">P2</span></div><input type="date" class="date-input" title="Fecha límite P2"></div><div class="period-row"><div class="period-header"><span class="period-tag p3">P3</span></div><input type="date" class="date-input" title="Fecha límite P3"></div><div class="period-row"><div class="period-header"><span class="period-tag p4">P4</span></div><input type="date" class="date-input" title="Fecha límite P4"></div></div></div></td>
         </tr>
 
       </tbody>
@@ -659,9 +691,31 @@
     }
   }
 
-  MATERIAS.forEach(renderNote);
-  updateAlert();
-</script>
+  function exportHTML() {
+    // Collect all saved dates from localStorage
+    const dates = {};
+    MATERIAS.forEach(m => {
+      PERIODS.forEach(p => {
+        const key = storageKey(m.id, p.key);
+        const val = localStorage.getItem(key);
+        if (val) dates[key] = val;
+      });
+    });
 
+    // Get current HTML source
+    let html = document.documentElement.outerHTML;
+
+    // Inject a <script> block with the saved dates right before 
+<script id="preloaded-dates">
+(function(){
+  const saved = {
+  "juanjo_ciencias_p2": "2026-02-24",
+  "juanjo_lenguaje_p2": "2026-03-10"
+};
+  Object.keys(saved).forEach(function(k){ localStorage.setItem(k, saved[k]); });
+})();
+</script>
 </body>
-</html>
+    // This block will pre-populate localStorage on load
+    const injectScript = `
+</body></html>
